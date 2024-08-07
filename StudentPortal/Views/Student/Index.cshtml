@@ -1,0 +1,56 @@
+﻿@model List<StudentPortal.Models.Entities.Student>
+
+<div class="card shadow border-o mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Student List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="container">
+            <div class="col-12  text-end">
+                <a class="btn btn-primary fs-6" asp-controller="Student" asp-action="CreateStudent">
+                    <i class="bi bi-plus-circle-dotted"></i> Create New Student
+                </a>
+            </div>
+            <table class="table table-border table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Student Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone NUmber
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>@obj.StudentName</td>
+                            <td>@obj.Email</td>
+                            <td>@obj.PhoneNumber</td>
+                            <td>
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Student" asp-action="UpdateStudent" asp-route-id="@obj.StudentId" class="btn btn-primary mx-2">
+                                        <i class="bi bi-pencil-square"></i>Edit
+                                    </a>
+                                    <a asp-controller="Student" asp-action="RemoveStudent" asp-route-id="@obj.StudentId" class="btn btn-danger mx-2">
+                                        <i class="bi bi-trash-fill"></i>Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
